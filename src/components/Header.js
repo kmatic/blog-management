@@ -25,8 +25,6 @@ const List = styled.ul`
     list-style-type: none;
     gap: 15px;
     align-items: center;
-    padding: 15px;
-    margin: 15px;
 `;
 
 export default Header;
