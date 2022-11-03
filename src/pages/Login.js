@@ -28,6 +28,10 @@ const Form = styled.form`
     margin: 15px;
     gap: 15px;
     align-items: center;
+
+    input, textarea {
+        padding: 3px;
+    }
 `;
 
 const Btn = styled.button`

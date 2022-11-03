@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import styled from "styled-components";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Edit from "./pages/Edit";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <main>
         <Login />
         <Home />
+        <Edit />
       </main>
     </Wrapper>
   );
