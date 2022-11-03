@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Editor } from '@tinymce/tinymce-react';
 
 const Edit = () => {
     const [title, setTitle] = useState('');
@@ -14,12 +15,22 @@ const Edit = () => {
                 <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
             </div>
             <div>
-                <label><b>Text: </b></label>
-                <textarea type='text' value={text} onChange={(e) => setText(e.target.value)}/>
-            </div>
-            <div>
                 <label><b>Author: </b></label>
                 <input type='text' value={author} onChange={(e) => setAuthor(e.target.value)}/>
+            </div>
+            <div>
+                <label><b>Text: </b></label>
+            </div>
+            <div>
+                <Editor
+                    apiKey='e8076xdkv0i5shv3ywvnk8xeepaldam4m6mdxv8lmfyjyet7'
+                    value={text}
+                    init={{
+                        height: 300,
+                        menubar: false
+                    }}
+                    onEditorChange={(e) => setText(e.target.value)}
+                />
             </div>
             <Btn><b>Update</b></Btn>
         </Form>
@@ -27,12 +38,12 @@ const Edit = () => {
 }
 
 const Form = styled.form`
+    max-width: 600px;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
     padding: 15px;
-    margin: 15px;
     gap: 15px;
-    align-items: center;
 
     input, textarea {
         padding: 3px;
@@ -41,6 +52,7 @@ const Form = styled.form`
     > div {
         display: flex;
         flex-direction: column;
+        align-self: stretch;
     }
 `;
 

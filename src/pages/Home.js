@@ -24,7 +24,7 @@ const Home = () => {
             <h2>Posts</h2>
             <PostsWrapper>
                 {posts.map((post) => (
-                    <Post post={post}/>
+                    <Post post={post} key={post._id}/>
                 ))}
             </PostsWrapper>
         </div>

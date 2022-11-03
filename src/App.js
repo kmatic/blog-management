@@ -9,8 +9,8 @@ function App() {
     <Wrapper>
       <Header />
       <main>
-        <Login />
-        <Home />
+        {/* <Login /> */}
+        {/* <Home /> */}
         <Edit />
       </main>
     </Wrapper>
