@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Post from "../components/Post";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -21,20 +22,19 @@ const Home = () => {
     return (
         <div>
             <h2>Posts</h2>
-            <PostWrapper>
+            <PostsWrapper>
                 {posts.map((post) => (
-                    <div>
-                        <h3>{post.title}</h3>
-                        <p>{post.text}</p>
-                    </div>
+                    <Post post={post}/>
                 ))}
-            </PostWrapper>
+            </PostsWrapper>
         </div>
     )
 }
 
-const PostWrapper = styled.div`
+const PostsWrapper = styled.div`
     margin: 15px 0px;
+    display: grid;
+    gap: 15px;
 `;
 
 export default Home;
