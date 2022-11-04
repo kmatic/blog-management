@@ -23,6 +23,7 @@ const Login = ({ setAuth }) => {
             localStorage.setItem('auth', true);
             localStorage.setItem('token', data.token);
             setAuth(true);
+            console.log(data.token);
         } catch (err) {
             console.error(err);
         }

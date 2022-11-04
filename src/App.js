@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import New from './pages/New';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -26,10 +26,21 @@ function App() {
         <Header />
         <Main>
           <Routes>
-            <Route path='/posts' element={<Home />} />
+            <Route path='/' element={<Navigate replace to='/posts' />} />
+            <Route 
+              path='/posts'
+              element={
+                !auth? (<Navigate replace to='/login' />) : (<Home />)
+              }
+            />
             {/* <Router path='/posts/:id' element={<Edit />} /> */}
             <Route path='/login' element={<Login setAuth={setAuth}/>}/>
-            <Route path='/new' element={<New />} />
+            <Route
+              path='/new'
+              element={
+                !auth? (<Navigate replace to='/login' />) : (<New />)
+              }
+            />
           </Routes>
         </Main>
       </Wrapper>
