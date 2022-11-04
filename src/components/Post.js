@@ -21,14 +21,14 @@ const PostWrapper = styled.div`
     position: relative;
     border: 2px solid lightgray;
     border-radius: 10px;
-    max-width: 350px;
+    max-width: 420px;
     overflow: hidden;
 `;
 
 const Div = styled.div`
     overflow-x: hidden;
-    overflow-y: scroll;
-    max-height: 350px;
+    overflow-y: auto;
+    max-height: 300px;
 
     > h3, p {
         margin: 15px;

@@ -24,7 +24,6 @@ const Login = () => {
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    padding: 15px;
     margin: 15px;
     gap: 15px;
     align-items: center;

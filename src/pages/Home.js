@@ -35,6 +35,7 @@ const PostsWrapper = styled.div`
     margin: 15px 0px;
     display: grid;
     gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
 `;
 
 export default Home;
