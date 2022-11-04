@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/blog-management/static/js/main.dad2c05a.js",
+    "index.html": "/blog-management/index.html",
+    "main.dad2c05a.js.map": "/blog-management/static/js/main.dad2c05a.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.dad2c05a.js"
+  ]
+}
