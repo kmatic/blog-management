@@ -48,7 +48,7 @@ function App() {
                         {/* <Router path='/posts/:id' element={<Edit />} /> */}
                         <Route
                             path="/login"
-                            element={<Login setAuth={setAuth} />}
+                            element={<Login setAuth={setAuth} auth={auth} />}
                         />
                         <Route
                             path="/new"

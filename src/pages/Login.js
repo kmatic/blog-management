@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Navigate } from 'react-router-dom';
 
-const Login = ({ setAuth }) => {
+const Login = ({ auth, setAuth }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -27,42 +28,44 @@ const Login = ({ setAuth }) => {
             localStorage.setItem('auth', true);
             localStorage.setItem('token', data.token);
             setAuth(true);
-            console.log(data.token);
         } catch (err) {
             console.error(err);
         }
     };
 
-    return (
-        <Form onSubmit={(e) => handleSubmit(e)}>
-            <h2>Login</h2>
-            <div>
-                <label>
-                    <b>Username: </b>
-                </label>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label>
-                    <b>Password: </b>
-                </label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </div>
-            <Btn>
-                <b>Login</b>
-            </Btn>
-        </Form>
-    );
+    if (!auth) {
+        return (
+            <Form onSubmit={(e) => handleSubmit(e)}>
+                <h2>Login</h2>
+                <div>
+                    <label>
+                        <b>Username: </b>
+                    </label>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>
+                        <b>Password: </b>
+                    </label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <Btn>
+                    <b>Login</b>
+                </Btn>
+            </Form>
+        );
+    }
+    return <Navigate to="/posts" />;
 };
 
 const Form = styled.form`
