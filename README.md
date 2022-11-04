@@ -8,7 +8,7 @@ Blog front-end [here](https://blog-front-end-opal.vercel.app/)
 
 ## Preview
 
-![](./preview/preview.mp4)
+https://user-images.githubusercontent.com/3086068/200073929-a10712b2-4efd-4012-862c-287c9872ea2a.mp4
 
 ## Built With
 
