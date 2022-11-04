@@ -1,44 +1,41 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = ({ auth, setAuth }) => {
     const logout = (e) => {
         e.preventDefault();
         setAuth(false);
         localStorage.clear();
-        console.log('sheesh');
-    }
+    };
 
     return (
         <header>
             <nav>
                 <List>
                     <li>
-                        <h1><StyledLink to='/posts'>Blog CMS</StyledLink></h1>
+                        <h1>
+                            <StyledLink to="/posts">Blog CMS</StyledLink>
+                        </h1>
                     </li>
                     <div>
                         <li>
-                            <StyledLink to='/posts'>Home</StyledLink>
+                            <StyledLink to="/posts">Home</StyledLink>
                         </li>
                         <li>
-                            <StyledLink to='/new'>New Post</StyledLink>
+                            <StyledLink to="/new">New Post</StyledLink>
                         </li>
                         {!auth && (
                             <li>
-                                <StyledLink to='/login'>Login</StyledLink>
+                                <StyledLink to="/login">Login</StyledLink>
                             </li>
                         )}
-                        {auth && (
-                            <Logout onClick={logout}>
-                                Logout
-                            </Logout>
-                        )}
+                        {auth && <Logout onClick={logout}>Logout</Logout>}
                     </div>
                 </List>
             </nav>
         </header>
-    )
-}
+    );
+};
 
 const List = styled.ul`
     display: flex;

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { useState } from "react";
+import styled from 'styled-components';
+import { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 const New = () => {
@@ -11,31 +11,47 @@ const New = () => {
         <Form>
             <h2>New Post</h2>
             <div>
-                <label><b>Title: </b></label>
-                <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                <label>
+                    <b>Title: </b>
+                </label>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
             </div>
             <div>
-                <label><b>Author: </b></label>
-                <input type='text' value={author} onChange={(e) => setAuthor(e.target.value)}/>
+                <label>
+                    <b>Author: </b>
+                </label>
+                <input
+                    type="text"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                />
             </div>
             <div>
-                <label><b>Text: </b></label>
+                <label>
+                    <b>Text: </b>
+                </label>
             </div>
             <div>
                 <Editor
-                    apiKey='e8076xdkv0i5shv3ywvnk8xeepaldam4m6mdxv8lmfyjyet7'
+                    apiKey="e8076xdkv0i5shv3ywvnk8xeepaldam4m6mdxv8lmfyjyet7"
                     value={text}
                     init={{
                         height: 300,
-                        menubar: false
+                        menubar: false,
                     }}
                     onEditorChange={(e) => setText(e.target.value)}
                 />
             </div>
-            <Btn><b>Create Post</b></Btn>
+            <Btn>
+                <b>Create Post</b>
+            </Btn>
         </Form>
-    )
-}
+    );
+};
 
 const Form = styled.form`
     max-width: 600px;
@@ -45,7 +61,8 @@ const Form = styled.form`
     padding: 15px;
     gap: 15px;
 
-    input, textarea {
+    input,
+    textarea {
         padding: 3px;
     }
 

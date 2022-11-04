@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,8 +14,8 @@ const Post = ({ post }) => {
                 <p>{post.text}</p>
             </Div>
         </PostWrapper>
-    )
-}
+    );
+};
 
 const PostWrapper = styled.div`
     position: relative;
@@ -30,7 +30,8 @@ const Div = styled.div`
     overflow-y: auto;
     max-height: 300px;
 
-    > h3, p {
+    > h3,
+    p {
         margin: 15px;
     }
 `;

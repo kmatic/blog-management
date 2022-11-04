@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
 const Login = ({ setAuth }) => {
     const [username, setUsername] = useState('');
@@ -8,17 +8,21 @@ const Login = ({ setAuth }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://ghostly-zombie-21867.herokuapp.com/api/login', {
-                method: 'POST',
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                }),
-                headers: {
-                    'Content-type': 'application/json'
-                }
-            });
-            if (res.status !== 200) return console.error('Wrong username or password');
+            const res = await fetch(
+                'https://ghostly-zombie-21867.herokuapp.com/api/login',
+                {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                    }),
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                },
+            );
+            if (res.status !== 200)
+                return console.error('Wrong username or password');
             const data = await res.json();
             localStorage.setItem('auth', true);
             localStorage.setItem('token', data.token);
@@ -27,23 +31,39 @@ const Login = ({ setAuth }) => {
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     return (
         <Form onSubmit={(e) => handleSubmit(e)}>
             <h2>Login</h2>
             <div>
-                <label><b>Username: </b></label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                <label>
+                    <b>Username: </b>
+                </label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
             </div>
             <div>
-                <label><b>Password: </b></label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                <label>
+                    <b>Password: </b>
+                </label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
             </div>
-            <Btn><b>Login</b></Btn>
+            <Btn>
+                <b>Login</b>
+            </Btn>
         </Form>
-    )
-}
+    );
+};
 
 const Form = styled.form`
     display: flex;
@@ -52,7 +72,8 @@ const Form = styled.form`
     gap: 15px;
     align-items: center;
 
-    input, textarea {
+    input,
+    textarea {
         padding: 3px;
     }
 `;
