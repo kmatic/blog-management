@@ -28,7 +28,7 @@ const PostWrapper = styled.div`
 const Div = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 300px;
+    height: 300px;
 
     > h3,
     p {
