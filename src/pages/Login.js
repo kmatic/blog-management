@@ -34,11 +34,11 @@ const Login = ({ setAuth }) => {
             <h2>Login</h2>
             <div>
                 <label><b>Username: </b></label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} required/>
             </div>
             <div>
                 <label><b>Password: </b></label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
             </div>
             <Btn><b>Login</b></Btn>
         </Form>

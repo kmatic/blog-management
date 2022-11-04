@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Wrapper>
-        <Header />
+        <Header auth={auth} setAuth={setAuth} />
         <Main>
           <Routes>
             <Route path='/' element={<Navigate replace to='/posts' />} />

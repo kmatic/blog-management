@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Header = ({ userAuth }) => {
+const Header = ({ auth, setAuth }) => {
+    const logout = (e) => {
+        e.preventDefault();
+        setAuth(false);
+        localStorage.clear();
+        console.log('sheesh');
+    }
+
     return (
         <header>
             <nav>
@@ -16,12 +23,16 @@ const Header = ({ userAuth }) => {
                         <li>
                             <StyledLink to='/new'>New Post</StyledLink>
                         </li>
-                        <li>
-                            <StyledLink to='/login'>Login</StyledLink>
-                        </li>
-                        <li>
-                            <StyledLink to='/logout'>Logout</StyledLink>
-                        </li>
+                        {!auth && (
+                            <li>
+                                <StyledLink to='/login'>Login</StyledLink>
+                            </li>
+                        )}
+                        {auth && (
+                            <Logout onClick={logout}>
+                                Logout
+                            </Logout>
+                        )}
                     </div>
                 </List>
             </nav>
@@ -48,6 +59,14 @@ const StyledLink = styled(Link)`
     :visited {
         color: black;
     }
+
+    :hover {
+        color: blue;
+    }
+`;
+
+const Logout = styled.button`
+    background: inherit;
 
     :hover {
         color: blue;
