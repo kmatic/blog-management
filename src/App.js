@@ -26,7 +26,7 @@ function App() {
     }, []);
 
     return (
-        <Router>
+        <Router basename="/">
             <Wrapper>
                 <Header auth={auth} setAuth={setAuth} />
                 <Main>
