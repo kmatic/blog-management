@@ -1,14 +1,68 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Edit = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [author, setAuthor] = useState('');
 
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    const getPost = async () => {
+        try {
+            const res = await fetch(
+                `https://ghostly-zombie-21867.herokuapp.com/api/posts/${id}`,
+            );
+            const data = await res.json();
+            setTitle(data.post.title);
+            setText(data.post.text);
+            setAuthor(data.post.author);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleUpdate = (value, editor) => {
+        const raw = editor.getContent({ format: 'text' });
+        setText(raw);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(
+                `https://ghostly-zombie-21867.herokuapp.com/api/posts/${id}`,
+                {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        title: title,
+                        text: text,
+                        author: author,
+                    }),
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+            if (res.status !== 200)
+                return console.error('Something went wrong');
+            navigate('/posts');
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        getPost();
+    }, []);
+
     return (
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
             <h2>Edit Post</h2>
             <div>
                 <label>
@@ -43,7 +97,8 @@ const Edit = () => {
                         height: 300,
                         menubar: false,
                     }}
-                    onEditorChange={(e) => setText(e.target.value)}
+                    toolbar="undo paste"
+                    onEditorChange={handleUpdate}
                 />
             </div>
             <Btn>

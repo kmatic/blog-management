@@ -7,7 +7,6 @@ const New = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [author, setAuthor] = useState('');
-    const [postCreated, setPostCreated] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -34,7 +33,6 @@ const New = () => {
             navigate('/posts');
         } catch (err) {
             console.error(err);
-            setPostCreated(false);
         }
     };
 
@@ -86,11 +84,6 @@ const New = () => {
             <Btn>
                 <b>Create Post</b>
             </Btn>
-            {postCreated && (
-                <h3>
-                    <b>Your post has been created!</b>
-                </h3>
-            )}
         </Form>
     );
 };
