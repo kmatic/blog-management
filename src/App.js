@@ -45,7 +45,16 @@ function App() {
                                 )
                             }
                         />
-                        {/* <Router path='/posts/:id' element={<Edit />} /> */}
+                        <Route
+                            path="/posts/:id"
+                            element={
+                                !auth ? (
+                                    <Navigate replace to="/login" />
+                                ) : (
+                                    <Edit />
+                                )
+                            }
+                        />
                         <Route
                             path="/login"
                             element={<Login setAuth={setAuth} auth={auth} />}

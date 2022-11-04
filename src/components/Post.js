@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-const Post = ({ post }) => {
+const Post = ({ post, handleDelete }) => {
     return (
         <PostWrapper>
             <IconWrapper>
-                <FontAwesomeIcon icon={faPen} />
-                <FontAwesomeIcon icon={faTrash} />
+                <button>
+                    <FontAwesomeIcon icon={faPen} />
+                </button>
+                <button onClick={(e) => handleDelete(e, post._id)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </button>
             </IconWrapper>
             <Div>
                 <h3>{post.title}</h3>
@@ -21,7 +26,7 @@ const PostWrapper = styled.div`
     position: relative;
     border: 2px solid lightgray;
     border-radius: 10px;
-    max-width: 420px;
+    max-width: 950px;
     overflow: hidden;
 `;
 
@@ -38,13 +43,17 @@ const Div = styled.div`
 
 const IconWrapper = styled.div`
     position: absolute;
-    top: 10px;
-    right: 40px;
+    bottom: 10px;
+    right: 25px;
     display: flex;
-    gap: 25px;
-    background: lightgray;
-    padding: 10px;
-    border-radius: 8px;
+    gap: 15px;
+
+    > button {
+        background: lightgray;
+        border-radius: 8px;
+        padding: 4px 8px;
+        cursor: pointer;
+    }
 `;
 
 export default Post;
