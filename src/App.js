@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Edit from './pages/Edit';
 import New from './pages/New';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Routes,
     Route,
     Navigate,
