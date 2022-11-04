@@ -1,12 +1,35 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const Login = () => {
+const Login = ({ setAuth }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch('https://ghostly-zombie-21867.herokuapp.com/api/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                }),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+            if (res.status !== 200) return console.error('Wrong username or password');
+            const data = await res.json();
+            localStorage.setItem('auth', true);
+            localStorage.setItem('token', data.token);
+            setAuth(true);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
             <h2>Login</h2>
             <div>
                 <label><b>Username: </b></label>
@@ -14,7 +37,7 @@ const Login = () => {
             </div>
             <div>
                 <label><b>Password: </b></label>
-                <input type='text' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <Btn><b>Login</b></Btn>
         </Form>

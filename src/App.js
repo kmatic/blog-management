@@ -11,9 +11,9 @@ function App() {
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem('auth');
+    const isAuth = localStorage.getItem('auth');
 
-    if (user) {
+    if (isAuth) {
       setAuth(true);
     } else {
       setAuth(false);
@@ -28,7 +28,7 @@ function App() {
           <Routes>
             <Route path='/posts' element={<Home />} />
             {/* <Router path='/posts/:id' element={<Edit />} /> */}
-            <Route path='/login' element={<Login />}/>
+            <Route path='/login' element={<Login setAuth={setAuth}/>}/>
             <Route path='/new' element={<New />} />
           </Routes>
         </Main>
